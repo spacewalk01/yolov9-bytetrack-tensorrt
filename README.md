@@ -10,12 +10,7 @@
 ## 🚀 Usage
 
 ``` shell
-# infer an image
-yolov9-tensorrt.exe yolov9-c.engine test.jpg
-# infer a folder(images)
-yolov9-tensorrt.exe yolov9-c.engine data
-# infer a video
-yolov9-tensorrt.exe yolov9-c.engine test.mp4 # the video path
+yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 ```
 
 ## 🛠️ Setup
