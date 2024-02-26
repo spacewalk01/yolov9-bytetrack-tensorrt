@@ -38,8 +38,3 @@ cmake ..
 cmake --build . --config Release
 ```
 
-## Requirement
-   - TensorRT
-   - CUDA
-   - Eigen3
-   - Opencv
