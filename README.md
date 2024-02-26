@@ -20,10 +20,9 @@ We refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrac
 
 ## 🖥️ Requirement
    - TensorRT
-   - CUDA
+   - CUDA, CudaNN
    - Eigen3
-   - Opencv
-   - 
+   - OpenCV
 ## 👏 Acknowledgement
 
 This project is based on the following awesome projects:
