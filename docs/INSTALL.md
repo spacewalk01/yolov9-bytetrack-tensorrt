@@ -14,7 +14,10 @@ python export.py --weights yolov9-c.pt --include onnx
 ``` shell
 trtexec.exe --onnx=yolov9-c.onnx --explicitBatch --saveEngine=yolov9-c.engine --fp16
 ```
-4. Set `opencv` and `tensorrt` installation paths in CMakeLists.txt:
+
+4. Install Eigen referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/)
+
+5. Set `opencv` and `tensorrt` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
 
 ```
 # Find and include OpenCV
@@ -26,7 +29,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 set(TENSORRT_DIR "your path to TensorRT")
 ```
 
-5. Build:
+6. Build:
    
 ``` shell
 mkdir build
@@ -39,3 +42,9 @@ cmake --build . --config Release
    - TensorRT 8.6
    - CUDA 11.8
    - Windows 10
+     
+## Tested Environment
+   - TensorRT
+   - CUDA
+   - Eigen
+   - Opencv
