@@ -4,7 +4,7 @@
 This repository provides a C++ implementation of the state-of-the-art [YOLOv9](https://github.com/WongKinYiu/yolov9) object detection model, optimized with TensorRT for real-time inference and combined with the [ByteTracker](https://github.com/Vertical-Beach/ByteTrack-cpp) object tracker.
 
 <p align="center" margin: 0 auto;>
-  <img src="https://s1.ezgif.com/tmp/ezgif-1-e723b5f4b1.gif">
+  <img src="![demo1](https://github.com/spacewalk01/yolov9-bytetrack-trt/assets/6389915/a8aad0a2-3ede-488d-91ed-01e2edbc6b24)">
 </p>
 
 ## 🚀 Usage
