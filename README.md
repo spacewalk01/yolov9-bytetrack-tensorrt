@@ -4,8 +4,8 @@
 This repository contains a C++ implementation of YOLOv9, integrated with the ByteTracker object tracker and optimized using the TensorRT framework for real-time performance.
 
 <p align="center" margin: 0 auto;>
-  <img src="assets/demo.gif" width="320px" />
-  <img src="assets/highway.gif" width="320px" />
+  <img src="assets/demo.gif" width="360px" />
+  <img src="assets/highway.gif" width="360px" />
 </p>
 
 ## 🚀 Usage
