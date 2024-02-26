@@ -5,6 +5,9 @@ This repository provides a C++ implementation of the state-of-the-art [YOLOv9](h
 
 <p align="center" margin: 0 auto;>
   <img src="assets/demo.gif" width="640px" />
+  <img src="[assets/demo.gif](https://s1.ezgif.com/tmp/ezgif-1-e723b5f4b1.gif)" width="640px" />
+
+  
 </p>
 
 ## 🚀 Usage
