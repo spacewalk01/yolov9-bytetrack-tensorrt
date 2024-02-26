@@ -131,10 +131,8 @@ int main(int argc, char** argv)
         colors.push_back(color);
     }
 
-    //path to video
-    string VideoPath = path;
     // open cap
-    cv::VideoCapture cap(VideoPath);
+    cv::VideoCapture cap(path);
 
     int width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
     int height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
