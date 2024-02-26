@@ -22,5 +22,5 @@ We refer to our [docs/INSTALL.md](https://github.com/spacewalk01/tensorrt-yolov9
 
 This project is based on the following awesome projects:
 - [Yolov9](https://github.com/WongKinYiu/yolov9) - YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information.
-- [TensorRT](https://github.com/NVIDIA/TensorRT/tree/release/8.6/samples) - TensorRT samples and api documentation.
-- [TensorRTx](https://github.com/wang-xinyu/tensorrtx) - Implementation of popular deep learning networks with TensorRT network definition API.
+- [ByteTrack](https://github.com/Vertical-Beach/ByteTrack-cpp) - C++ implementation of ByteTrack algorithm.
+- [TensorRT-Yolov9](https://github.com/spacewalk01/tensorrt-yolov9) - C++ implementation of YOLOv9 using TensorRT API.
