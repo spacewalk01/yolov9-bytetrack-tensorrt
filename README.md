@@ -8,22 +8,22 @@ This project integrates YOLOv9 and ByteTracker for real-time, TensorRT-optimized
   <img src="assets/highway.gif" width="360px" />
 </p>
 
-## 🚀 Usage
+## Usage
 
 ``` shell
 yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 ```
 
-## 🛠️ Setup
+## Setup
 
 We refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/docs/INSTALL.md) for detailed installation instructions. Note that Bytetracker is directly integrated without any modification.
 
-## 🖥️ Requirement
+## Requirement
    - TensorRT
    - CUDA, CudaNN
    - Eigen3
    - OpenCV
-## 👏 Acknowledgement
+## Acknowledgement
 
 This project is based on the following awesome projects:
 - [Yolov9](https://github.com/WongKinYiu/yolov9) - YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information.
