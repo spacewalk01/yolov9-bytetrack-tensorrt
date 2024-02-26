@@ -1,7 +1,7 @@
 
 <h1 align="center"><span>YOLOv9 with ByteTracker (C++)</span></h1>
 
-This repository provides a C++ implementation of YOLOv9, integrated with the ByteTracker object tracker and optimized using the TensorRT framework for real-time performance.
+This repository contains a C++ implementation of YOLOv9, integrated with the ByteTracker object tracker and optimized using the TensorRT framework for real-time performance.
 
 <p align="center" margin: 0 auto;>
   <img src="assets/demo.gif" width="320px" />
