@@ -25,7 +25,7 @@ yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 
 ## Setup
 
-We refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/docs/INSTALL.md) for detailed installation instructions. Note that Bytetracker is directly integrated without any modification.
+Refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/docs/INSTALL.md) for detailed installation instructions. Note that Bytetracker is directly integrated without any modification.
 
 ## Requirement
    - TensorRT
