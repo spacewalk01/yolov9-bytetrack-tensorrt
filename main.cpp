@@ -12,7 +12,6 @@
 #include <opencv2/opencv.hpp>
 #include "yolov9.h"
 #include "byteTrack/BYTETracker.h"
-#include "common.h"
 #include <random>
 #include <fstream>
 #include <iostream>
@@ -94,7 +93,7 @@ void draw_bboxes(cv::Mat& frame, const std::vector<byte_track::BYTETracker::STra
         int width = detection->getRect().tlwh[2];
         int height = detection->getRect().tlwh[3];
 
-        auto color_id = colors.size() % trackId;
+        auto color_id = trackId % colors.size();
         cv::rectangle(frame, cv::Point(x, y), cv::Point(x + width, y + height), colors[color_id], 3);
 
         // Detection box text
@@ -123,7 +122,7 @@ int main(int argc, char** argv)
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dis(100, 255);
-    for (int i = 0; i < coconame.size(); i++)
+    for (int i = 0; i < 5; i++)
     {
         cv::Scalar color = cv::Scalar(dis(gen),
             dis(gen),
@@ -165,7 +164,6 @@ int main(int argc, char** argv)
     cv::destroyAllWindows();
     cap.release();
     output_video.release();
-
 
     return 0;
 }
