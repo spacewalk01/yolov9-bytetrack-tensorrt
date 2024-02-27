@@ -114,7 +114,7 @@ int main(int argc, char** argv)
     assert(argc == 3);
 
     // init model
-    Yolov9 yolomodel(engine_file_path);
+    Yolov9 model(engine_file_path);
 
     // init tracker
     byte_track::BYTETracker tracker(30, 30);
@@ -148,7 +148,7 @@ int main(int argc, char** argv)
 
         if (frame.empty()) break;
 
-        yolomodel.predict(frame, detections);
+        model.predict(frame, detections);
         
         format_tracker_input(frame, detections, tracks);
         const auto outputs = tracker.update(tracks);
