@@ -1,5 +1,5 @@
 
-<h1 align="center"><span>YOLOv9 with ByteTracker (C++)</span></h1>
+<h1 align="center"><span>YOLOv9 + ByteTracker (C++)</span></h1>
 
 This project integrates YOLOv9 and ByteTracker for real-time, TensorRT-optimized object detection and tracking, extending the existing [TensorRT-Yolov9](https://github.com/spacewalk01/tensorrt-yolov9) implementation.
 
