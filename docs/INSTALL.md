@@ -1,7 +1,5 @@
 ## Installation
 
-## Installation
-
 1. Clone YOLOv9 repo and install its requirements:
 
 ``` shell
@@ -27,9 +25,9 @@ python reparameterize.py yolov9-c.pt yolov9-c-converted.pt
 python export.py --weights yolov9-c-converted.pt --include onnx
 ```
 
-5. Install Eigen referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
+5. Install `Eigen` referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
 
-6. Set `opencv` and `tensorrt` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
+6. Set `OpenCV` and `TensorRT` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
 
 ```
 # Find and include OpenCV
