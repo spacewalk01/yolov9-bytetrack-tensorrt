@@ -17,31 +17,9 @@
 #include <iostream>
 
 using namespace std;
+using namespace cv;
 
-static std::vector<cv::Scalar> colors;
-
-bool IsPathExist(const std::string& path) {
-#ifdef _WIN32
-    DWORD fileAttributes = GetFileAttributesA(path.c_str());
-    return (fileAttributes != INVALID_FILE_ATTRIBUTES);
-#else
-    return (access(path.c_str(), F_OK) == 0);
-#endif
-}
-bool IsFile(const std::string& path) {
-    if (!IsPathExist(path)) {
-        printf("%s:%d %s not exist\n", __FILE__, __LINE__, path.c_str());
-        return false;
-    }
-
-#ifdef _WIN32
-    DWORD fileAttributes = GetFileAttributesA(path.c_str());
-    return ((fileAttributes != INVALID_FILE_ATTRIBUTES) && ((fileAttributes & FILE_ATTRIBUTE_DIRECTORY) == 0));
-#else
-    struct stat buffer;
-    return (stat(path.c_str(), &buffer) == 0 && S_ISREG(buffer.st_mode));
-#endif
-}
+static vector<Scalar> colors;
 
 void format_tracker_input(cv::Mat &frame, std::vector<Detection> &detections, std::vector<byte_track::Object> &tracker_objects)
 {
@@ -109,8 +87,6 @@ int main(int argc, char** argv)
 {
     const std::string engine_file_path{ argv[1] };
     const std::string path{ argv[2] };
-    std::vector<std::string> imagePathList;
-    bool                     isVideo{ false };
     assert(argc == 3);
 
     // init model
@@ -119,9 +95,9 @@ int main(int argc, char** argv)
     // init tracker
     byte_track::BYTETracker tracker(30, 30);
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(100, 255);
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<int> dis(100, 255);
     for (int i = 0; i < 5; i++)
     {
         cv::Scalar color = cv::Scalar(dis(gen),
