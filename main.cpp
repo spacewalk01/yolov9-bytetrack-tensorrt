@@ -8,7 +8,6 @@
 #include <iostream>
 #include <string>
 #include <tuple>
-#include <NvInfer.h>
 #include <opencv2/opencv.hpp>
 #include "yolov9.h"
 #include "byteTrack/BYTETracker.h"
@@ -21,7 +20,7 @@ using namespace cv;
 
 static vector<Scalar> colors;
 
-void format_tracker_input(cv::Mat &frame, std::vector<Detection> &detections, std::vector<byte_track::Object> &tracker_objects)
+void format_tracker_input(Mat &frame, vector<Detection> &detections, vector<byte_track::Object> &tracker_objects)
 {
     const float H = 640;
     const float W = 640;
@@ -58,12 +57,11 @@ void format_tracker_input(cv::Mat &frame, std::vector<Detection> &detections, st
      }
 }
 
-void draw_bboxes(cv::Mat& frame, const std::vector<byte_track::BYTETracker::STrackPtr> &output)
+void draw_bboxes(Mat& frame, const vector<byte_track::BYTETracker::STrackPtr> &output)
 {
     for (int i = 0; i < output.size(); i++)
     {
         auto detection = output[i];
-        auto box = detection->getRect();
         auto trackId = detection->getTrackId();
 
         int x = detection->getRect().tlwh[0];
@@ -72,21 +70,21 @@ void draw_bboxes(cv::Mat& frame, const std::vector<byte_track::BYTETracker::STra
         int height = detection->getRect().tlwh[3];
 
         auto color_id = trackId % colors.size();
-        cv::rectangle(frame, cv::Point(x, y), cv::Point(x + width, y + height), colors[color_id], 3);
+        rectangle(frame, Point(x, y), Point(x + width, y + height), colors[color_id], 3);
 
         // Detection box text
-        std::string classString = std::to_string(trackId);
-        cv::Size textSize = cv::getTextSize(classString, cv::FONT_HERSHEY_DUPLEX, 1, 2, 0);
-        cv::Rect textBox(x, y - 40, textSize.width + 10, textSize.height + 20);
-        cv::rectangle(frame, textBox, colors[color_id], cv::FILLED);
-        cv::putText(frame, classString, cv::Point(x + 5, y - 10), cv::FONT_HERSHEY_DUPLEX, 1, cv::Scalar(0, 0, 0), 2, 0);
+        string classString = to_string(trackId);
+        Size textSize = getTextSize(classString, FONT_HERSHEY_DUPLEX, 1, 2, 0);
+        Rect textBox(x, y - 40, textSize.width + 10, textSize.height + 20);
+        rectangle(frame, textBox, colors[color_id], FILLED);
+        putText(frame, classString, Point(x + 5, y - 10), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 0), 2, 0);
     }
 }
 
 int main(int argc, char** argv)
 {
-    const std::string engine_path{ argv[1] };
-    const std::string video_path{ argv[2] };
+    const string engine_path{ argv[1] };
+    const string video_path{ argv[2] };
     assert(argc == 3);
 
     // Init model
@@ -99,28 +97,28 @@ int main(int argc, char** argv)
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<int> dis(100, 255);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 100; i++)
     {
-        cv::Scalar color = cv::Scalar(dis(gen),
+        Scalar color = Scalar(dis(gen),
             dis(gen),
             dis(gen));
         colors.push_back(color);
     }
 
-    // Open the input video
-    cv::VideoCapture cap(video_path);
+    // Open the video
+    VideoCapture cap(video_path);
 
     // Create a VideoWriter object to save the processed video
-    int width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-    int height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);    
-    cv::VideoWriter output_video("output_video.avi", cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, cv::Size(width, height));
+    int width = cap.get(CAP_PROP_FRAME_WIDTH);
+    int height = cap.get(CAP_PROP_FRAME_HEIGHT);    
+    VideoWriter output_video("output_video.avi", VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, Size(width, height));
 
     // Process the video
     while (1)
     {
-        cv::Mat frame;
-        std::vector<Detection> detections;
-        std::vector<byte_track::Object> tracks;
+        Mat frame;
+        vector<Detection> detections;
+        vector<byte_track::Object> tracks;
 
         cap >> frame;
 
@@ -135,11 +133,11 @@ int main(int argc, char** argv)
 
         imshow("prediction", frame);
         output_video.write(frame);
-        cv::waitKey(1);
+        waitKey(1);
     }
 
     // Release resources
-    cv::destroyAllWindows();
+    destroyAllWindows();
     cap.release();
     output_video.release();
 
