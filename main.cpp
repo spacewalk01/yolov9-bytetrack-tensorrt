@@ -85,16 +85,17 @@ void draw_bboxes(cv::Mat& frame, const std::vector<byte_track::BYTETracker::STra
 
 int main(int argc, char** argv)
 {
-    const std::string engine_file_path{ argv[1] };
-    const std::string path{ argv[2] };
+    const std::string engine_path{ argv[1] };
+    const std::string video_path{ argv[2] };
     assert(argc == 3);
 
-    // init model
-    Yolov9 model(engine_file_path);
+    // Init model
+    Yolov9 model(engine_path);
 
-    // init tracker
+    // Init tracker
     byte_track::BYTETracker tracker(30, 30);
 
+    // Store random colors
     random_device rd;
     mt19937 gen(rd());
     uniform_int_distribution<int> dis(100, 255);
@@ -107,13 +108,14 @@ int main(int argc, char** argv)
     }
 
     // open cap
-    cv::VideoCapture cap(path);
-
-    int width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-    int height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+    cv::VideoCapture cap(video_path);
 
     // Create a VideoWriter object to save the processed video
+    int width = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+    int height = cap.get(cv::CAP_PROP_FRAME_HEIGHT);    
     cv::VideoWriter output_video("output_video.avi", cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, cv::Size(width, height));
+
+    // Process the video
     while (1)
     {
         cv::Mat frame;
