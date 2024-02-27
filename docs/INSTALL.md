@@ -1,23 +1,35 @@
 ## Installation
 
-1. Setup [yolov9](https://github.com/WongKinYiu/yolov9) and download [yolov9-c.pt](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt) model.
-3. Convert the model to onnx format:
+## Installation
 
-- Copy `general.y` in this repo to `utils/general.py` in yolov9 installation folder
-- Copy `export.py` in this repo to yolov9 installation folder
-- Then export the model
-``` shell
-python export.py --weights yolov9-c.pt --include onnx
-```
-3. Build a TensorRT engine: 
+1. Clone YOLOv9 repo and install its requirements:
 
 ``` shell
-trtexec.exe --onnx=yolov9-c.onnx --explicitBatch --saveEngine=yolov9-c.engine --fp16
+git clone https://github.com/WongKinYiu/yolov9
+cd yolov9
+pip install -r requirements.txt  
 ```
 
-4. Install Eigen referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
+3. Download [yolov9-c.pt](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt) or [yolov9-e.pt](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e.pt) model.
+4. Convert the model to onnx format:
 
-5. Set `opencv` and `tensorrt` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
+- Put `reparameterize.py` file to YOLOv9 installation folder and perform re-parameterization:
+  
+``` shell
+python reparameterize.py yolov9-c.pt yolov9-c-converted.pt
+```
+
+- Or you can skip re-parameterization and downloaded the re-parameterized models [yolov9-c-converted.pt](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c-converted.pt) and [yolov9-e-converted.pt](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e-converted.pt).
+  
+- Then export the model:
+  
+``` shell
+python export.py --weights yolov9-c-converted.pt --include onnx
+```
+
+5. Install Eigen referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
+
+6. Set `opencv` and `tensorrt` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
 
 ```
 # Find and include OpenCV
