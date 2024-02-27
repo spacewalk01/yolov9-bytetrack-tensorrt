@@ -107,7 +107,7 @@ int main(int argc, char** argv)
         colors.push_back(color);
     }
 
-    // open cap
+    // Open the input video
     cv::VideoCapture cap(video_path);
 
     // Create a VideoWriter object to save the processed video
