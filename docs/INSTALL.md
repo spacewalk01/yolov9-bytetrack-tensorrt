@@ -29,7 +29,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 set(TENSORRT_DIR "your path to TensorRT")
 ```
 
-6. Build:
+6. Build a project:
    
     1. Windows:
     ```bash
