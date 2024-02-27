@@ -30,8 +30,11 @@ We refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrac
 ## Requirement
    - TensorRT
    - CUDA, CudaNN
-   - Eigen3
+   - Eigen 3.3
+   - C++ compiler with C++17 or higher support
+   - CMake 3.14 or higher
    - OpenCV
+     
 ## Acknowledgement
 
 This project is based on the following awesome projects:
