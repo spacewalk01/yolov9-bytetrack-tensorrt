@@ -9,17 +9,9 @@ using namespace cv;
 
 struct Detection
 {
-    float confidence;
+    float conf;
     int class_id;
-    cv::Rect box;
-};
-
-struct YoloParams
-{
-    float confThreshold = 0.3;
-    float nmsThreshold = 0.4;
-    int kMaxInputImageSize = 4096 * 4096;
-
+    Rect bbox;
 };
 
 class Yolov9
@@ -27,36 +19,37 @@ class Yolov9
 
 public:
 
-    Yolov9(string modelPath);
-
-    void predict(Mat& inputImage, std::vector<Detection>& bboxes);
-
+    Yolov9(string engine_path);
+    
     ~Yolov9();
+    
+    void predict(Mat& image, vector<Detection>& output);
+
+    void draw(Mat& image, const vector<Detection>& output);
 
 private:
 
-    YoloParams mParams;
-
-    void deserializeEngine(string enginePath);
-
-    void initialize();
-
-    size_t getSizeByDim(const Dims& dims);
-
-    void postprocess(std::vector<Detection>& bboxes);
+    void postprocess(vector<Detection>& output);
 
 private:
-    std::vector<cv::Scalar> colors;
 
-    vector<Dims> mInputDims;            //!< The dimensions of the input to the network.
-    vector<Dims> mOutputDims;           //!< The dimensions of the output to the network.
-    vector<float*> mGpuBuffers;          //!< The vector of device buffers needed for engine execution
-    vector<float*> mCpuBuffers;
-    vector<size_t> mBufferBindingBytes;
-    vector<size_t> mBufferBindingSizes;
-    cudaStream_t mCudaStream;
+    float* gpu_buffers[2];               //!< The vector of device buffers needed for engine execution
+    float* cpu_output_buffer;
 
-    IRuntime* mRuntime;                 //!< The TensorRT runtime used to deserialize the engine
-    ICudaEngine* mEngine;               //!< The TensorRT engine used to run the network
-    IExecutionContext* mContext;        //!< The context for executing inference using an ICudaEngine
+    cudaStream_t cuda_stream;
+    IRuntime* runtime;                 //!< The TensorRT runtime used to deserialize the engine
+    ICudaEngine* engine;               //!< The TensorRT engine used to run the network
+    IExecutionContext* context;        //!< The context for executing inference using an ICudaEngine
+
+    // Model parameters
+    int model_input_w;
+    int model_input_h;
+    int num_detections;
+    int detection_attribute_size;
+    int num_classes = 80;
+    const int MAX_IMAGE_SIZE = 4096 * 4096;
+    float conf_threshold = 0.3f;
+    float nms_threshold = 0.4f;
+
+    vector<Scalar> colors;
 };
