@@ -31,10 +31,18 @@ set(TENSORRT_DIR "your path to TensorRT")
 
 6. Build:
    
-``` shell
-mkdir build
-cd build
-cmake ..
-cmake --build . --config Release
-```
+    1. Windows:
+    ```bash
+     mkdir build
+    cd build
+    cmake ..
+    cmake --build . --config Release
+    ```
+
+    2. Linux(not tested):
+    ```bash
+    mkdir build
+    cd build && mkdir out_dir
+    cmake ..
+    make
 
