@@ -77,7 +77,6 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
 void format_tracker_input(Mat &frame, vector<Detection> &detections, vector<byte_track::Object> &tracker_objects)
 {
     const float H = 640;
