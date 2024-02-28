@@ -25,7 +25,7 @@ python yolov9_bytetrack.py --model yolov9-c-converted.onnx --video_path test_vid
 
 ## What is next?
 
-- [ ] **Python(TensorRT):**
+- [ ] Python(TensorRT)
 
 ## Setup
 
