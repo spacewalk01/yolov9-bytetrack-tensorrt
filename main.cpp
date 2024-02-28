@@ -29,10 +29,10 @@ void format_tracker_input(Mat &frame, vector<Detection> &detections, vector<byte
 
     for (int i = 0; i < detections.size(); i++)
     {
-        float x = detections[i].box.x;
-        float y = detections[i].box.y;
-        float width = detections[i].box.width;
-        float height = detections[i].box.height;
+        float x = detections[i].bbox.x;
+        float y = detections[i].bbox.y;
+        float width = detections[i].bbox.width;
+        float height = detections[i].bbox.height;
 
         if (r_h > r_w)
         {
@@ -51,7 +51,7 @@ void format_tracker_input(Mat &frame, vector<Detection> &detections, vector<byte
 
         byte_track::Rect<float> rect(x, y, width, height);
 
-        byte_track::Object obj(rect, detections[i].class_id, detections[i].confidence);
+        byte_track::Object obj(rect, detections[i].class_id, detections[i].conf);
 
         tracker_objects.push_back(obj);
      }
