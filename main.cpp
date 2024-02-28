@@ -7,16 +7,9 @@
 
 #include <iostream>
 #include <string>
-#include <tuple>
-#include <opencv2/opencv.hpp>
 #include "yolov9.h"
 #include "byteTrack/BYTETracker.h"
 #include <random>
-#include <fstream>
-#include <iostream>
-
-using namespace std;
-using namespace cv;
 
 static vector<Scalar> colors;
 
@@ -99,9 +92,7 @@ int main(int argc, char** argv)
     uniform_int_distribution<int> dis(100, 255);
     for (int i = 0; i < 100; i++)
     {
-        Scalar color = Scalar(dis(gen),
-            dis(gen),
-            dis(gen));
+        Scalar color = Scalar(dis(gen), dis(gen), dis(gen));
         colors.push_back(color);
     }
 
