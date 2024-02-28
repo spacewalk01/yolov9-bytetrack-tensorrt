@@ -11,16 +11,16 @@ This project integrates YOLOv9 and ByteTracker for real-time, TensorRT-optimized
 ## Usage
 
 
-**Windows:**
+**CPP:**
 
 ``` shell
 yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 ```
 
-**Linux:**
+**Python:**
 
 ``` shell
-./yolov9-bytetrack-trt yolov9-c.engine test.mp4 # the video path
+python yolov9_bytetrack.py --model yolov9-c-converted.onnx --video_path test_video.mp4 --output_video_path result.mp4
 ```
 
 ## Setup
