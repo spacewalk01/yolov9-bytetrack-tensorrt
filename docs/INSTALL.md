@@ -25,9 +25,20 @@ python reparameterize.py yolov9-c.pt yolov9-c-converted.pt
 python export.py --weights yolov9-c-converted.pt --include onnx
 ```
 
-5. Install `Eigen` referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
+5. Build a TensorRT engine: 
 
-6. Set `OpenCV` and `TensorRT` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
+``` shell
+trtexec.exe --onnx=yolov9-c-converted.onnx --explicitBatch --saveEngine=yolov9-c.engine --fp16
+```
+  
+<details>    
+<summary>Note</summary>    
+'--fp16' is an optional argument for performing inference using fp16 precision.    
+</details>
+
+6. Install `Eigen` referring to [this guide](https://rubengerritsen.nl/docs/02_cmake/01_windows/). Maybe need administrative privileges.
+
+7. Set `OpenCV` and `TensorRT` installation paths in [CMakeLists.txt](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/CMakeLists.txt):
 
 ```
 # Find and include OpenCV
@@ -39,7 +50,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 set(TENSORRT_DIR "your path to TensorRT")
 ```
 
-6. Build a project:
+8. Build a project:
    
     1. Windows:
     ```bash
