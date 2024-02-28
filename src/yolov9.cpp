@@ -42,16 +42,6 @@ Yolov9::Yolov9(string engine_path)
     cuda_preprocess_init(MAX_IMAGE_SIZE);
 
     CUDA_CHECK(cudaStreamCreate(&cuda_stream));
-
-    // Create random colors
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<int> dis(100, 255);
-    for (int i = 0; i < coconame.size(); i++)
-    {
-        Scalar color = Scalar(dis(gen), dis(gen), dis(gen));
-        colors.push_back(color);
-    }
 }
 
 Yolov9::~Yolov9()
