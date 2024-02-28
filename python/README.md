@@ -15,6 +15,8 @@ Follow instruction step 1~4 in  [docs/INSTALL.md](https://github.com/spacewalk01
 
 ## Requirement
    - cython_bbox
+   - onnxruntime
+   - opencv
      
 ## Acknowledgement
 
