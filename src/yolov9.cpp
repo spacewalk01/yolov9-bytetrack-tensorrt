@@ -67,13 +67,14 @@ void Yolov9::predict(Mat& image, vector<Detection> &output)
 {
     // Preprocessing data on gpu
     cuda_preprocess(image.ptr(), image.cols, image.rows, gpu_buffers[0], model_input_w, model_input_h, cuda_stream);
+    CUDA_CHECK(cudaStreamSynchronize(cuda_stream));
 
     // Perform inference
     context->enqueueV2((void**)gpu_buffers, cuda_stream, nullptr);
-    CUDA_CHECK(cudaStreamSynchronize(cuda_stream));
 
     // Memcpy from device output buffer to host output buffer
     CUDA_CHECK(cudaMemcpyAsync(cpu_output_buffer, gpu_buffers[1], num_detections * detection_attribute_size * sizeof(float), cudaMemcpyDeviceToHost, cuda_stream));
+    CUDA_CHECK(cudaStreamSynchronize(cuda_stream));
 
     // Perform postprocessing
     postprocess(output);
