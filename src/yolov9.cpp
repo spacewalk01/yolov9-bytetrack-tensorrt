@@ -47,7 +47,8 @@ Yolov9::Yolov9(string engine_path)
 Yolov9::~Yolov9()
 {
     // Release stream and buffers
-    cudaStreamDestroy(cuda_stream);
+    CUDA_CHECK(cudaStreamSynchronize(cuda_stream));
+    CUDA_CHECK(cudaStreamDestroy(cuda_stream));
     for (int i = 0; i < 2; i++)
         CUDA_CHECK(cudaFree(gpu_buffers[i]));
     delete[] cpu_output_buffer;
