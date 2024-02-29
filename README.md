@@ -14,12 +14,14 @@ This project integrates YOLOv9 and ByteTracker for real-time, TensorRT-optimized
 - CPP(TensorRT):
 
 ``` shell
+cd Release
 yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 ```
 
 - Python(ONNX):
 
 ``` shell
+cd python
 python yolov9_bytetrack.py --model yolov9-c-converted.onnx --video_path test_video.mp4 --output_video_path result.mp4
 ```
 
