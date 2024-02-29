@@ -14,7 +14,7 @@ This project integrates YOLOv9 and ByteTracker for real-time, TensorRT-optimized
 - CPP(TensorRT):
 
 ``` shell
-cd Release
+cd build/release
 yolov9-bytetrack-trt.exe yolov9-c.engine test.mp4 # the video path
 ```
 
