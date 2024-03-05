@@ -1,1 +1,1 @@
-pip install cython_bbox
+cython_bbox
