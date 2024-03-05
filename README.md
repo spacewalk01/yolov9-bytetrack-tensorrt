@@ -31,6 +31,15 @@ python yolov9_bytetrack.py --model yolov9-c-converted.onnx --video_path test_vid
 
 ## Setup
 
+**Python:**
+
+``` shell
+cd python
+pip install -r requirement.txt
+```
+
+**CPP:**
+
 Refer to our [docs/INSTALL.md](https://github.com/spacewalk01/yolov9-bytetrack-tensorrt/blob/main/docs/INSTALL.md) for detailed installation instructions. Note that Bytetracker is directly integrated without any modification.
 
 ## Requirement
