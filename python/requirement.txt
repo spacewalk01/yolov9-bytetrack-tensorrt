@@ -1,1 +1,2 @@
 cython_bbox
+opencv-python
